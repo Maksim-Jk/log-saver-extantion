@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Console Logger",
+  "version": "1.0",
+  "description": "Расширение для логирования и экспорта вызовов console.log",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://elma-sasha.kapitalbank.uz/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://elma-sasha.kapitalbank.uz/*"],
+      "js": ["content-script.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["page-script.js"],
+      "matches": ["https://elma-sasha.kapitalbank.uz/*"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
